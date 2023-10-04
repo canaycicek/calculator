@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+}
+
+body{
+    font-size: 1.2rem;
+    background-color: #312d2dde;
+}
+.calculator{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2e2e2e;
+}
+.calculator-input{
+    width: 100%;
+    font-size: 4rem;
+    height: 70px;
+    border: none;
+    background-color: #111111;
+    color: #fff;
+    text-align: right;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+button{
+    height: 50px;
+    background-color: #000000;
+    border-radius: 3px;
+    border: 1px solid #c4c4c4;
+    font-size: 2.5rem;
+    color: #fff;
+}
+button:hover{
+    background-color: #66666667;
+}
+.operator{
+    color: #337cac;
+}
+.clearAll{
+    background-color: #000000;
+    border-color: #c4c4c4;
+    color: #fff;
+    grid-area: 2/4;
+}
+.clearAll:hover{
+    background-color: #66666667;
+}
+.equal-sign{
+    background-color: #2e86c0;
+    border-color: #337cac;
+    color: #fff;
+    grid-area: 5/4;
+}
+.equal-sign:hover{
+    background-color: #4e9ed4;
+}
+.calculator-keys{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+}
+.delete{
+    grid-area: 1/4/6/5;
+}
+.operatorSquared{
+    grid-area: 5/1;
+}
+.decimal{
+    grid-area: 4/3;
+}
+.zero{
+    grid-area: 4/2;
+}
+#multiplication{
+    grid-area: 4/4/6/5
+}
+#minus{
+    grid-area: 5/2;
+}
+#plus{
+    grid-area: 5/3;
+}
+#divide{
+    grid-area: 3/4/6/5;
+}
+.disableDarkMode, .disableLightMode{
+    display: none;
+}
+/* .theme{
+    width: 74.5px;
+    height: 50px;
+    cursor: pointer;
+    background-color: #000000;
+    border-radius: 3px;
+    border: 1px solid #c4c4c4;
+    font-size: 2.5rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.theme:hover{
+    background-color: #66666667;
+}
+.theme i {
+    position: absolute;
+    left: 25px;
+    right: auto;
+} */

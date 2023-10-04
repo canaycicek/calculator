@@ -4,14 +4,10 @@ const display = document.querySelector(".calculator-input");
 const keys = document.querySelector(".calculator-keys");
 const light = document.querySelector(".light");
 const dark = document.querySelector(".dark");
-const clearAll = document.querySelector(".clearAll");
 const squared = document.querySelector(".operatorSquared");
-const decimal = document.querySelector(".decimal");
-const plus = document.querySelector("#plus");
-const minus = document.querySelector("#minus");
-const multiplication = document.querySelector("#multiplication");
-const divide = document.querySelector("#divide");
-const equal = document.querySelector(".equal-sign");
+const squaredIcon = document.querySelector("#squaredIcon");
+const deleteLast = document.querySelector(".delete");
+const deleteIcon = document.querySelector("#deleteIcon");
 light.classList.remove("disableLightMode");
 let displayValue = "0";
 let firstValue = null;
@@ -52,22 +48,14 @@ keys.addEventListener("click", function (e) {
     case "clearAll":
       allClear();
       break;
-    case "operatorSquared":
-      squaredResult();
-      updateDisplay();
-      break;
     case "operatorTheme":
+      break;
+    case "delete":
       break;
     default:
       inputNumber(element.value);
   }
   updateDisplay();
-
-  if (element.classList.contains("delete")) {
-    deleteLast();
-    updateDisplay();
-    return;
-  }
 });
 
 function handleOperator(nextOperator) {
@@ -124,36 +112,16 @@ function allClear() {
   displayValue = "0";
 }
 
-function deleteLast() {
-    if(displayValue.length === 1 || displayValue === 0){
-        displayValue = 0
-    }else{
-        displayValue = displayValue.slice(0, displayValue.length - 1);
-    }
-}
-
-function squaredResult() {
+squared.addEventListener("click", function () {
   displayValue = displayValue * displayValue;
-}
+  updateDisplay();
+});
 
-// decimal.addEventListener("click", function(){
-//     if(!displayValue.includes(".")){
-//         displayValue = displayValue + "."
-//     }
-// })
-
-// plus.addEventListener("click", function(){
-//     displayValue = displayValue + "+"
-//     equal-sign.addEventListener("click", function(){
-
-//     })
-// })
-
-// clearAll.addEventListener("click", function(){
-//     displayValue = 0
-// })
-
-// squared.addEventListener("click", function(){
-//     displayValue = displayValue*displayValue
-//     updateDisplay()
-// })
+deleteLast.addEventListener("click", function () {
+  if (displayValue.length === 1 || displayValue === 0) {
+    displayValue = 0;
+  } else {
+    displayValue = displayValue.slice(0, displayValue.length - 1);
+  }
+  updateDisplay();
+});

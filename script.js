@@ -36,45 +36,38 @@ themeBtn.addEventListener("click", function () {
 
 keys.addEventListener("click", function (e) {
   const element = e.target;
+  const value = element.value;
   if (!element.matches("button")) return;
-
-  if (element.classList.contains("operator")) {
-    handleOperator(element.value);
-    updateDisplay();
-    return;
+  switch (value) {
+    case "+":
+    case "-":
+    case "*":
+    case "/":
+    case "=":
+      handleOperator(value);
+      break;
+    case ".":
+      inputDecimal();
+      break;
+    case "clearAll":
+      allClear();
+      break;
+    case "operatorSquared":
+      squaredResult();
+      updateDisplay();
+      break;
+    case "operatorTheme":
+      break;
+    default:
+      inputNumber(element.value);
   }
-
-  if (element.classList.contains("decimal")) {
-    inputDecimal();
-    updateDisplay();
-    return;
-  }
-
-  if (element.classList.contains("clearAll")) {
-    allClear();
-    updateDisplay();
-    return;
-  }
+  updateDisplay();
 
   if (element.classList.contains("delete")) {
     deleteLast();
     updateDisplay();
     return;
   }
-
-  if (element.classList.contains("operatorSquared")) {
-    squaredResult();
-    updateDisplay();
-    return;
-  }
-
-  if (element.classList.contains("operatorTheme")) {
-    console.log("operatorTheme", element.value);
-
-    return;
-  }
-  inputNumber(element.value);
-  updateDisplay();
 });
 
 function handleOperator(nextOperator) {
@@ -96,8 +89,6 @@ function handleOperator(nextOperator) {
 
   waitingForSecondValue = true;
   operator = nextOperator;
-
-  console.log(displayValue, firstValue, operator, waitingForSecondValue);
 }
 
 function inputNumber(num) {
@@ -107,8 +98,6 @@ function inputNumber(num) {
   } else {
     displayValue = displayValue === "0" ? num : displayValue + num;
   }
-
-  console.log(displayValue, firstValue, operator, waitingForSecondValue);
 }
 
 function calculate(first, second, operator) {
@@ -135,9 +124,13 @@ function allClear() {
   displayValue = "0";
 }
 
-// function deleteLast() {
-//     console.log(displayValue.slice(-1));
-// }
+function deleteLast() {
+    if(displayValue.length === 1 || displayValue === 0){
+        displayValue = 0
+    }else{
+        displayValue = displayValue.slice(0, displayValue.length - 1);
+    }
+}
 
 function squaredResult() {
   displayValue = displayValue * displayValue;
